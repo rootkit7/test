@@ -1,22 +1,23 @@
-FROM alpine
-#FROM alpine:3.7
-RUN apk --update add --no-cache openssh shadow sudo curl nmap
-RUN useradd test 
-RUN groupadd -g 61000 test-target
-RUN useradd -g 61000 -l -m -s /bin/false -u 61000 test-target
-#RUN echo "root:1234567Ab-" | chpasswd
-#RUN echo "test:1234567Ab-" | chpasswd
+FROM registry.redhat.io/rhoar-nodejs/nodejs-10
 
-# Modify sshd_config items to allow login
-RUN sed -i 's/#PermitRootLogin.*/PermitRootLogin\ yes/' /etc/ssh/sshd_config && \
-    sed -ie 's/#Port 22/Port 22/g' /etc/ssh/sshd_config && \
-    sed -ri 's/#HostKey \/etc\/ssh\/ssh_host_key/HostKey \/etc\/ssh\/ssh_host_key/g' /etc/ssh/sshd_config && \
-    sed -ir 's/#HostKey \/etc\/ssh\/ssh_host_rsa_key/HostKey \/etc\/ssh\/ssh_host_rsa_key/g' /etc/ssh/sshd_config && \
-    sed -ir 's/#HostKey \/etc\/ssh\/ssh_host_dsa_key/HostKey \/etc\/ssh\/ssh_host_dsa_key/g' /etc/ssh/sshd_config && \
-    sed -ir 's/#HostKey \/etc\/ssh\/ssh_host_ecdsa_key/HostKey \/etc\/ssh\/ssh_host_ecdsa_key/g' /etc/ssh/sshd_config && \
-    sed -ir 's/#HostKey \/etc\/ssh\/ssh_host_ed25519_key/HostKey \/etc\/ssh\/ssh_host_ed25519_key/g' /etc/ssh/sshd_config
+USER root
 
-# Generate new keys
-RUN /usr/bin/ssh-keygen -A && ssh-keygen -t rsa -b 4096 -f  /etc/ssh/ssh_host_key
-USER test 
-#CMD ["/usr/sbin/sshd","-D"]  # Start the ssh daemon
+# Copying in source code
+
+COPY upload/src /tmp/src
+
+# Change file ownership to the assemble user.
+
+RUN chown -R 1001:0 /tmp/src
+
+# Run assemble as non-root user
+
+USER 1001
+
+# Assemble script sourced from builder image based on user input or image metadata.
+
+RUN /usr/libexec/s2i/assemble
+
+# Run script sourced from builder image based on user input or image metadata.
+
+CMD /usr/libexec/s2i/run
