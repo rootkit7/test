@@ -5,8 +5,8 @@ RUN apk --update add --no-cache openssh shadow sudo curl nmap
 RUN useradd test 
 RUN groupadd -g 61000 test-target
 RUN useradd -g 61000 -l -m -s /bin/false -u 61000 test-target
-RUN echo "root:1234567Ab-" | chpasswd
-RUN echo "test:1234567Ab-" | chpasswd
+#RUN echo "root:1234567Ab-" | chpasswd
+#RUN echo "test:1234567Ab-" | chpasswd
 
 
 # Modify sshd_config items to allow login
