@@ -1,5 +1,6 @@
 #FROM alpine
-FROM alpine:3.7
+#FROM alpine:3.7
+FROM jefferyb/openshift-alpine
 #RUN apk add --no-cache shadow sudo 
 RUN apk --update add --no-cache openssh shadow sudo curl nmap
 RUN useradd test 
