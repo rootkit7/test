@@ -49,8 +49,7 @@ WORKDIR /tools
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl && chmod +x kubectl
 RUN git clone https://github.com/lgandx/Responder.git
 
-#RUN adduser -D test01
-RUN useradd -m -U -s /bin/sh test01
+RUN adduser -D test01
 USER test01
 #CMD ["/bin/zsh"]
 ENTRYPOINT ["sh"]
