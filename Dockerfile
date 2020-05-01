@@ -26,7 +26,6 @@ RUN apk add --no-cache --update  \
     libffi-dev \
     openssl-dev \
     libc-dev \
-#   ipython \
     cmake \
     nodejs nodejs-npm \
     zsh \
@@ -44,16 +43,16 @@ RUN apk add --no-cache --update  \
     sudo \
     su-exec \
     doas
+    
 RUN npm install -g  bufferutil utf-8-validate wscat 
+
 WORKDIR /tools
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl && chmod +x kubectl
 RUN git clone https://github.com/lgandx/Responder.git
 
-RUN adduser -D test01
+RUN adduser -D test01 && adduser test01 test01
 RUN echo "test01 ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers && echo "test01 ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/test01 \
 && chmod 0440 /etc/sudoers.d/test01 && echo "Set disable_coredump false" >> /etc/sudo.conf
-
-RUN adduser test01 test01
 
 USER test01
 #CMD ["/bin/zsh"]
