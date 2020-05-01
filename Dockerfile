@@ -50,7 +50,7 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s 
 RUN git clone https://github.com/lgandx/Responder.git
 
 RUN adduser -D test01
-RUN echo 'test01 ALL=(ALL) ALL' > /etc/sudoers.d/test01 
+RUN echo 'test01 ALL=(ALL) ALL' > /etc/sudoers 
 RUN adduser test01 test01
 
 USER test01
