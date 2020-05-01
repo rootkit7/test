@@ -40,7 +40,9 @@ RUN apk add --no-cache --update  \
     htop \
     screen \
     expect \
-    bind-tools
+    bind-tools \
+    sudo
+    
 
 RUN npm install -g  bufferutil utf-8-validate wscat 
 WORKDIR /tools
