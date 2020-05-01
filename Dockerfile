@@ -35,7 +35,8 @@ RUN apk add --no-cache --update  \
     lftp \
     docker \
     gdb \
-    htop
+    htop \
+    screen
 
 RUN npm install -g  bufferutil utf-8-validate wscat 
 WORKDIR /kube
