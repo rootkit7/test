@@ -16,6 +16,7 @@ RUN apk add --no-cache --update  \
     nmap-ncat \
     make \
     vim \
+    nano \
     go \
     git \
     python-dev \
