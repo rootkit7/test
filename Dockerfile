@@ -24,7 +24,7 @@ RUN apk add --no-cache --update  \
     libffi-dev \
     openssl-dev \
     libc-dev \
-    ipython \
+#    ipython \
     build-base \
     cmake \
     nodejs \
