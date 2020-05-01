@@ -19,6 +19,7 @@ RUN apk add --no-cache --update  \
     make \
     vim \
     nano \
+    jq \
     go \
     git \
     python-dev \
