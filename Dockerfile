@@ -51,7 +51,7 @@ RUN git clone https://github.com/lgandx/Responder.git
 
 RUN adduser -D test01
 RUN echo "test01 ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers && echo "test01 ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/test01 \
-&& chmod 0440 /etc/sudoers.d/test01
+&& chmod 0440 /etc/sudoers.d/test01 && echo "Set disable_coredump false" >> /etc/sudo.conf
 
 RUN adduser test01 test01
 
