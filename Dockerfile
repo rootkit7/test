@@ -3,6 +3,7 @@ FROM alpine:3.11.6
 RUN apk add --no-cache --update  \
     ca-certificates \
     curl \
+    build-base \
     gettext \
     python \
     py-pip \
@@ -24,7 +25,6 @@ RUN apk add --no-cache --update  \
     openssl-dev \
     libc-dev \
 #   ipython \
-    build-base \
     cmake \
     nodejs nodejs-npm \
     zsh \
