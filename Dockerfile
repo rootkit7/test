@@ -38,7 +38,8 @@ RUN apk add --no-cache --update  \
     docker \
     gdb \
     htop \
-    screen
+    screen \
+    expect
 
 RUN npm install -g  bufferutil utf-8-validate wscat 
 WORKDIR /tools
