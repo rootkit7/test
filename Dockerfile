@@ -43,7 +43,7 @@ RUN apk add --no-cache --update  \
     sudo \
     su-exec \
     doas
-RUN apk del build-dependencies    
+
 RUN npm install -g  bufferutil utf-8-validate wscat 
 
 WORKDIR /tools
