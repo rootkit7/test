@@ -28,6 +28,8 @@ RUN apk add --no-cache --update  \
     cmake \
     nodejs nodejs-npm \
     zsh \
+    bash \
+    dash \
     socat \
     openssh-client \
     lftp \
