@@ -3,7 +3,7 @@ FROM alpine:latest
 RUN apk add --no-cache --update  \
     ca-certificates \
     libseccomp-dev \
-	linux-headers \
+    linux-headers \
     curl \
     build-base \
     gettext \
