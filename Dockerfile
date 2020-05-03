@@ -2,6 +2,8 @@ FROM alpine:latest
 # some tools
 RUN apk add --no-cache --update  \
     ca-certificates \
+    libseccomp-dev \
+	linux-headers \
     curl \
     build-base \
     gettext \
