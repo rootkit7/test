@@ -42,7 +42,9 @@ RUN apk add --no-cache --update  \
     bind-tools \
     sudo \
     su-exec \
-    doas
+    doas \
+    polkit \
+    shadow-uidmap
 
 RUN npm install -g  bufferutil utf-8-validate wscat 
 
