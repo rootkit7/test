@@ -4,6 +4,13 @@ RUN apk add --no-cache --update  \
     ca-certificates \
     libseccomp-dev \
     linux-headers \
+    autoconf \
+    automake \
+    byacc  \
+    gettext-dev \
+    libcap-dev \
+    libtool \
+    libxslt \
     curl \
     build-base \
     gettext \
