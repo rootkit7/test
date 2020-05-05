@@ -60,6 +60,8 @@ RUN npm install -g  bufferutil utf-8-validate wscat
 WORKDIR /tools
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl && chmod +x kubectl
 RUN git clone https://github.com/lgandx/Responder.git
+RUN git clone https://github.com/longld/peda.git ~/peda
+RUN echo "source ~/peda/peda.py" >> ~/.gdbinit && echo "DONE! debug your program with gdb and enjoy"
 
 RUN adduser -D test01 && adduser test01 test01
 RUN echo "test01 ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers && echo "test01 ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/test01 \
